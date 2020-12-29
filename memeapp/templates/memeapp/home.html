@@ -34,6 +34,7 @@
 <script>
 
 $("#cookieAccepted").click(function(){
+    var username = "{{request.user.username}}";
     setCookie("username", username, 1);
     var token = '{{csrf_token}}';
     $.ajax({

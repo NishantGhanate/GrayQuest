@@ -74,10 +74,17 @@ WSGI_APPLICATION = 'GrayQuest.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# This is DEBUG project , please use .env in production code 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'CONN_MAX_AGE': 500,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd750m44mrm477o',
+        'USER': 'drruuiitoxjnxc',
+        'PASSWORD': '64504591a2d05ba4ca5cb78f8893a7fdffa27c7a905d256a432d156e3fd37c1a',
+        'HOST': 'ec2-18-210-214-86.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'URI' : 'postgres://drruuiitoxjnxc:64504591a2d05ba4ca5cb78f8893a7fdffa27c7a905d256a432d156e3fd37c1a@ec2-18-210-214-86.compute-1.amazonaws.com:5432/d750m44mrm477o'
     }
 }
 
