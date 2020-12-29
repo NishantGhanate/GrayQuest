@@ -1,0 +1,41 @@
+{% extends 'memeapp/main.html' %}
+{% load static %}
+
+{% block title %} Login {% endblock%}
+
+{% block content %}
+
+<!-- Login page UI -->
+<form action="/login" method="post">
+    {% csrf_token %}
+     <div class='centered' >
+      <div class='centerFormHeader' style="color: rgb(221, 221, 221);">
+        <img class ='loginImage' src="{% static 'images/happyface.png'%}" alt="happyface" width="100">
+        <p> Welcome back </p>
+      </div>
+      {% if errorMessages %}
+        <p style="color: red;">username or password incorrect</p>
+      {% endif %}
+
+      <input name="username" type="text" class="form-control" id="id_username_login" placeholder="Username" required="true"> 
+        <br>
+      <input name="password" type="password" class="form-control" id="id_password_login" placeholder="Password...">
+        <br>
+      <input  type="submit"  class="loginCred" id="id_submit_login" value="LOGIN"> 
+      <br><br>
+      <span style="color: rgb(221, 221, 221);">  Don't have an account ? </span>
+      <a href="/register" class="anchorLogin" id="id_register"> Click here </a>
+      
+     
+      {% if messages %} 
+      <div id='infoMessage' style="margin-top: 20px;">
+        {% for message in messages %}
+          <span>{{message}}</span>
+        {% endfor %}  
+      </div>
+      {% endif %}
+
+    </div>
+</form>
+
+{% endblock %}

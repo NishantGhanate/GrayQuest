@@ -1,0 +1,80 @@
+body{
+    background-color: rgb(0, 0, 0) !important;
+    color: white;
+}
+
+.centered{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.posterCaption{
+    margin-top: 250px;
+    color: cornsilk;
+}
+
+.anchorLogin{
+    margin-top: 25px;
+}
+
+.centerFormHeader{
+    text-align: center;
+    margin-bottom: 35px;
+}
+  
+#centerFormHeader img{
+    margin: auto;
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+  
+#centerFormHeader p{
+    text-align: center;
+}
+
+.loginImage{
+    -webkit-filter: invert(1);
+   filter: invert(1);
+}
+
+.cookieBanner{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2147483645;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #575757;
+}
+
+.cookieHeader{
+    margin-bottom: 8px;
+    font-family: "CeraPRO-Bold", sans-serif, arial;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+.cookieDescription{
+    font-family: "CeraPRO-Regular", sans-serif, arial;
+    font-weight: normal;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.memeImages{
+    display: block;
+    object-fit: scale-down;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+    
+}

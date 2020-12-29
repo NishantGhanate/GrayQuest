@@ -1,0 +1,61 @@
+{% extends 'memeapp/main.html' %}
+{% load static %}
+{% block title %} MEME APP HOME {% endblock%}
+
+{% block content %}
+
+<!--  -->
+<div>
+    <img class="centered" src="{% static 'images/tenor.gif' %}" alt="this slowpoke moves"  width=500/>
+    {% if customer and customer.cookie %}
+    <span class="centered posterCaption"> VIEW DANK MEMES <a href="memes"> CLICK  HERE </a> </span> 
+    <!-- Cookie banner fade out -->
+    <div id="cookieMessage" class="cookieBanner">
+        <div class="cookieDescription">We stored your username in temp cookie aka session  that is - > </div>
+        <div id='cookieName'></div>
+    </div>
+    
+    {% elif customer %}
+    <!-- Show cookie banner Ask consent if no logout -->
+     <div id="cookieConsent" class="cookieBanner">
+      <div class="cookieHeader">THIS WEBSITE USES COOKIES </div>
+      <div class="cookieDescription">We use cookies to personalise content for you , consent to our cookies if you continue to use our website.</div>      
+      <div class="cookieActions">
+      <div>
+          <input type="button" name="" id="cookieAccepted" value="Ok">
+          <input type="button" name="" id="cookieDeckined" value="Decline">   
+      </div> 
+    </div>
+    {% else %}
+    <span class="centered posterCaption"> login to view  <a href="login"> CLICK </a></span> 
+    {% endif %}
+</div>
+
+<script>
+
+$("#cookieAccepted").click(function(){
+    setCookie("username", username, 1);
+    var token = '{{csrf_token}}';
+    $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: "/",
+            data: {cookieConsent : true},
+            success: function (response) {
+                window.location.href = response["redirect"];
+            },
+          error: function (response) {
+            // alert the error if any error occured
+            alert(response["error"]);
+          }
+    });
+});
+
+$("#cookieDeckined").click(function(){
+    alert("Sorry ... no cookie no meme")
+    window.location.href = "/logout";
+});
+
+</script>
+
+{% endblock %}

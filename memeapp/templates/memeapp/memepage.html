@@ -1,0 +1,59 @@
+{% extends 'memeapp/main.html' %}
+{% load static %}
+{% block title %} Meme page {% endblock%}
+
+{% block content %}
+
+<div class="container" style="margin-top: 20px;"> 
+
+
+<div class="row">
+    {% for meme in memes%}
+    <div class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-body">
+            <img src="{{meme.url}}"  class="memeImages" alt="{{meme.name}}">
+            <div class="d-flex justify-content-between align-items-center">
+              <p style="margin: auto;" > {{meme.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+
+<!-- pagination -->
+<div>
+    {% if memes.has_other_pages %}
+    <ul class="pagination">
+      {% if memes.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ memes.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><a class="page-link">&laquo;</a></li>
+      {% endif %}
+      {% for i in memes.paginator.page_range %}
+        {% if memes.number == i %}
+          <li class="page-item"><a class="page-link">{{ i }} <span class="sr-only">(current)</span></a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if memes.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ memes.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><a class="page-link">&raquo;</a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    </div>
+</div>
+
+
+<style>
+    body{
+        background-color: rgb(231, 231, 231) !important;
+        color: rgb(49, 49, 49);
+    }
+</style>
+{% endblock %}
