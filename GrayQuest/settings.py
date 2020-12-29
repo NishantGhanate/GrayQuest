@@ -28,7 +28,7 @@ SECRET_KEY = 'i)7#w)yxp=05zfttg_1son9)4_^ypmg+j*jcrq5nufdu9)!$n%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','grayquestmeme.herokuapp.com']
 
 
 # Application definition
